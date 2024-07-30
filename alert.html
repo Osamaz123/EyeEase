@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EyeEase Alert</title>
+  <link rel="stylesheet" href="alert.css">
+</head>
+<body>
+  <button id="close-btn">&times;</button> <!-- Added close button -->
+
+  <div class="container">
+    <h1>Time for a Break!</h1>
+    <p>Take a 20-second pause and look at something 20 feet away.
+       Your eyes will thank you!</p>
+    <div id="timer">20</div>
+  </div>
+  <audio id="alert-sound" src="alertSound.mp3"></audio> <!-- Include your audio file here -->
+  <script>
+    let timerElement = document.getElementById('timer');
+    let timeLeft = 20;
+    let alertSound = document.getElementById('alert-sound');
+
+    let countdown = setInterval(() => {
+      timeLeft--;
+      timerElement.textContent = timeLeft;
+   
+      if (timeLeft === 2) { // Adjusting the condition to play when timeLeft is 2
+        alertSound.play(); // Play the sound when the countdown reaches 2
+      }
+
+      if (timeLeft <= 0) {
+       clearInterval(countdown);
+      }
+    }, 1000);
+
+    // Added event listener for close button
+    document.getElementById('close-btn').addEventListener('click', () => {
+      window.close();
+    });
+  </script>
+</body>
+</html>

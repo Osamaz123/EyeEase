@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EyeEase</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Welcome to EyeEase! 🌟</h2>
+  <div class="container">
+    <p>Your personal assistant for maintaining healthy eyes. Every 20 minutes,
+       we'll remind you to take a 20-second break</p>
+    <p>Take a 20-second break after:</p>
+    <div id="timer">20:00</div>
+  </div>
+
+  <script>
+    const { ipcRenderer } = require('electron');
+    let timerElement = document.getElementById('timer');
+    let timeLeft = 1200; // 20 minutes in seconds
+  
+    function formatTime(seconds) {
+      let minutes = Math.floor(seconds / 60);
+      let remainingSeconds = seconds % 60;
+      return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+    }
+  
+    let countdown = setInterval(() => {
+      timeLeft--;
+      timerElement.textContent = formatTime(timeLeft);
+      if (timeLeft <= 0) {
+        clearInterval(countdown);
+      }
+    }, 1000);
+  
+    // Reset timer when alert window is closed
+    ipcRenderer.on('reset-timer', () => {
+      timeLeft = 1200; // Reset to 20 minutes
+      timerElement.textContent = formatTime(timeLeft);
+      countdown = setInterval(() => {
+        timeLeft--;
+        timerElement.textContent = formatTime(timeLeft);
+        if (timeLeft <= 0) {
+          clearInterval(countdown);
+        }
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
