@@ -21,6 +21,13 @@ The 20-20-20 rule is a simple guideline to help reduce digital eye strain. It su
 - Sound alert for break notifications.
 - Cross-platform support (Windows, MacOS).
 
+## Demo
+<p align="center">
+  <img src="https://github.com/Osamaz123/EyeEase/blob/master/EyeEaseDemo.gif" width="600" height="400" />
+</p>
+
+
+
 ## Installation
 
 ### Prerequisites
