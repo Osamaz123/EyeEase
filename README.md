@@ -44,6 +44,12 @@ npm install
 npm start
 ```
 
+## Usage
+
+1. Download the `EyeEase-win32-x64.zip` file from the latest [release](https://github.com/Osamaz123/EyeEase/releases).
+2. Extract the contents of the ZIP file.
+3. Run the `EyeEase.exe` file from the extracted folder.
+
 ## Contributing
 We welcome contributions from the community! If you have any ideas, suggestions, or bug reports, please open an issue or submit a pull request.
 
